@@ -71,7 +71,7 @@ describe('Dynamo', function() {
                 var cb = sinon.stub();
 
                 Storage(config)[method].get('walterwhite', cb);
-                collectionObj.find.should.be.calledWith({hash: 'walterwhite', range: method}, cb);
+                collectionObj.find.should.be.calledWith({hash: method, range: 'walterwhite'}, cb);
             });
         });
 
