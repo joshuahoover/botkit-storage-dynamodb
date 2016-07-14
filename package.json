@@ -1,0 +1,38 @@
+{
+  "name": "botkit-storage-dynamodb",
+  "version": "",
+  "description": "A DynamoDB storage driver for Botkit",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "pretest": "jscs ./",
+    "test": "istanbul cover --report lcov --dir coverage/ _mocha ./tests --grep ./tests/*.js -- --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "keywords": [
+    "botkit",
+    "dynamodb",
+    "slack"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "dynasty": "^0.2.5"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "jscs": "^2.8.0",
+    "mocha": "^2.3.4",
+    "proxyquire": "^1.7.3",
+    "should": "^8.1.1",
+    "should-sinon": "0.0.3",
+    "sinon": "^1.17.2"
+  }
+}
