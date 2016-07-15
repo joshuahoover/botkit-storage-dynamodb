@@ -42,14 +42,27 @@ function getStorage(db, table, type) {
 
     return {
         get: function(id, cb) {
-            dynamo.find({hash: id, range: type}, cb);
+            dynamo.find({hash: type, range: id})
+            .then(function(res) {
+                cb(res);
+            });
         },
+
         save: function(data, cb) {
-            data[type] = type;
-            dynamo.insert(data, cb);
+            dynamo.update({ hash: type, range: data.id }, removeTypeAndID(data))
+            .then(function(res) {
+                cb(res);
+            });
         },
+
         all: function(cb) {
             // Do something?
         }
     };
+}
+
+function removeTypeAndID(data) {
+    delete data.id;
+    delete data.type;
+    return data;
 }
