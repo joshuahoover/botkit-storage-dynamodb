@@ -18,7 +18,8 @@ describe('Dynamo', function() {
 
         collectionObj = {
             find: sinon.stub(),
-            update: sinon.stub()
+            update: sinon.stub(),
+            findAll: sinon.stub()
         };
 
         collectionMock = {
@@ -85,6 +86,15 @@ describe('Dynamo', function() {
                     {hash: method, range: 'walterwhite'},
                     {username: 'username'}
                 );
+            });
+        });
+
+        describe(method + '.all', function() {
+            it('should call findAll', function() {
+                var cb = sinon.stub();
+
+                Storage(config)[method].all(cb);
+                collectionObj.findAll.should.be.calledWith(method);
             });
         });
     });
