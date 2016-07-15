@@ -44,19 +44,22 @@ function getStorage(db, table, type) {
         get: function(id, cb) {
             dynamo.find({hash: type, range: id})
             .then(function(res) {
-                cb(res);
+                cb(null, res);
             });
         },
 
         save: function(data, cb) {
             dynamo.update({ hash: type, range: data.id }, removeTypeAndID(data))
             .then(function(res) {
-                cb(res);
+                cb(null, res);
             });
         },
 
         all: function(cb) {
-            // Do something?
+            dynamo.findAll(type)
+            .then(function(res) {
+                cb(null, res);
+            });
         }
     };
 }
