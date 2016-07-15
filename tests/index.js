@@ -18,7 +18,7 @@ describe('Dynamo', function() {
 
         collectionObj = {
             find: sinon.stub(),
-            insert: sinon.stub()
+            update: sinon.stub()
         };
 
         collectionMock = {
@@ -71,20 +71,19 @@ describe('Dynamo', function() {
                 var cb = sinon.stub();
 
                 Storage(config)[method].get('walterwhite', cb);
-                collectionObj.find.should.be.calledWith({hash: method, range: 'walterwhite'}, cb);
+                collectionObj.find.should.be.calledWith({hash: method, range: 'walterwhite'});
             });
         });
 
         describe(method + '.save', function() {
-
-            it('should call insert', function() {
-                var data = {id: 'walterwhite', type: method},
+            it('should call update', function() {
+                var data = {id: 'walterwhite', type: method, username: 'username'},
                     cb = sinon.stub();
 
                 Storage(config)[method].save(data, cb);
-                collectionObj.insert.should.be.calledWith(
-                    data,
-                    cb
+                collectionObj.update.should.be.calledWith(
+                    {hash: method, range: 'walterwhite'},
+                    {username: 'username'}
                 );
             });
         });
