@@ -10,19 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git"
+    "url": "https://github.com/joshuahoover/botkit-storage-dynamodb"
   },
   "keywords": [
     "botkit",
     "dynamodb",
     "slack"
   ],
-  "author": "",
+  "author": "Joshua Hoover",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/joshuahoover/botkit-storage-dynamodb/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/joshuahoover/botkit-storage-dynamodb",
   "dependencies": {
     "dynasty": "^0.2.5"
   },
