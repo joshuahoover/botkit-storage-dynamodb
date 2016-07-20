@@ -1,6 +1,6 @@
 {
   "name": "botkit-storage-dynamodb",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A DynamoDB storage driver for Botkit",
   "main": "src/index.js",
   "scripts": {
