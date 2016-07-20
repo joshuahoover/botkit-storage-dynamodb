@@ -45,7 +45,7 @@ function getStorage(db, table, type) {
             dynamo.find({hash: type, range: id})
             .then(function(res) {
                 res = res || {};
-                if(Object.keys(res).length === 0) { // no result found
+                if (Object.keys(res).length === 0) { // no result found
                     cb('No result found for ' + id, null);
                 } else { // result found
                     cb(null, res);
