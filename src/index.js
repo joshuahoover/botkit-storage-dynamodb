@@ -9,7 +9,7 @@ module.exports = function(config) {
     /**
      */
     if (!config || !config.dynamoRegion || !config.dynamoAccessKey || !config.dynamoAccessSecret) {
-        throw new Error('Need to provide dynamo dynamoRegion, dynamoAccessKey,' +
+        throw new Error('Need to provide dynamoRegion, dynamoAccessKey,' +
                         ' dynamoAccessSecret');
     }
     config.dynamoTable = config.dynamoTable || 'botkit';
@@ -45,7 +45,11 @@ function getStorage(db, table, type) {
             dynamo.find({hash: type, range: id})
             .then(function(res) {
                 res = res || {};
-                cb(null, res);
+                if(Object.keys(res).length === 0) { // no result found
+                    cb('No result found for ' + id, null);
+                } else { // result found
+                    cb(null, res);
+                }
             }).catch(function(err) {
                 cb(err, null);
             });
