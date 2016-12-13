@@ -1,4 +1,4 @@
-# botkit-storage-mongo
+# botkit-storage-dynamodb
 
 A DynamoDB storage module for Botkit.
 
