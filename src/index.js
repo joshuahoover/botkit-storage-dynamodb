@@ -78,7 +78,8 @@ function getStorage(db, table, type) {
 }
 
 function removeTypeAndID(data) {
-    delete data.id;
-    delete data.type;
-    return data;
+    var copy = JSON.parse(JSON.stringify(data));
+    delete copy.id;
+    delete copy.type;
+    return copy;
 }
