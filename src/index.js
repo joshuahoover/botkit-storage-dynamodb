@@ -1,5 +1,5 @@
 /**
- * botkit-storage-mongo - MongoDB driver for Botkit
+ * botkit-storage-dynamodb - DynamoDB driver for Botkit
  *
  * @param  {Object} config Must contain a dynamoRegion, dynamoAccessKey,
  *         dynamoAccessSecret properties, optionally dynamoTable (defaults to botkit)
@@ -78,7 +78,8 @@ function getStorage(db, table, type) {
 }
 
 function removeTypeAndID(data) {
-    delete data.id;
-    delete data.type;
-    return data;
+    var copy = JSON.parse(JSON.stringify(data));
+    delete copy.id;
+    delete copy.type;
+    return copy;
 }
