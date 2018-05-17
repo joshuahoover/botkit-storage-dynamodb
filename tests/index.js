@@ -17,9 +17,9 @@ describe('Dynamo', function() {
                   dynamoAccessSecret: 'secret'};
 
         collectionObj = {
-            find: sinon.stub(),
-            update: sinon.stub(),
-            findAll: sinon.stub()
+            find: sinon.stub().resolves({}),
+            update: sinon.stub().resolves(true),
+            findAll: sinon.stub().resolves([])
         };
 
         collectionMock = {
@@ -33,25 +33,25 @@ describe('Dynamo', function() {
 
     describe('Initialization', function() {
         it('should throw an error if config is missing', function() {
-            Storage.should.throw('Need to provide dynamo dynamoRegion, ' +
+            Storage.should.throw('Need to provide dynamoRegion, ' +
             'dynamoAccessKey, dynamoAccessSecret');
         });
 
         it('should throw an error if dynamoRegion is missing', function() {
             config.dynamoRegion = null;
-            (function() {Storage(config);}).should.throw('Need to provide dynamo dynamoRegion, ' +
+            (function() {Storage(config);}).should.throw('Need to provide dynamoRegion, ' +
             'dynamoAccessKey, dynamoAccessSecret');
         });
 
         it('should throw an error if dynamoAccessKey is missing', function() {
             config.dynamoAccessKey = null;
-            (function() {Storage(config);}).should.throw('Need to provide dynamo dynamoRegion, ' +
+            (function() {Storage(config);}).should.throw('Need to provide dynamoRegion, ' +
             'dynamoAccessKey, dynamoAccessSecret');
         });
 
         it('should throw an error if dynamoAccessSecret is missing', function() {
             config.dynamoAccessSecret = null;
-            (function() {Storage(config);}).should.throw('Need to provide dynamo dynamoRegion, ' +
+            (function() {Storage(config);}).should.throw('Need to provide dynamoRegion, ' +
             'dynamoAccessKey, dynamoAccessSecret');
         });
 
