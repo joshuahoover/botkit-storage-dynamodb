@@ -1,24 +1,20 @@
 /**
  * botkit-storage-dynamodb - DynamoDB driver for Botkit
  *
- * @param  {Object} config Must contain a dynamoRegion, dynamoAccessKey,
- *         dynamoAccessSecret properties, optionally dynamoTable (defaults to botkit)
+ * @param  {Object} config Must contain region, accessKeyId,
+ *         secretAccessKey properties, optionally dynamoTable (defaults to botkit)
  * @return {Object} A storage object conforming to the Botkit storage interface
  */
 module.exports = function(config) {
     /**
      */
-    if (!config || !config.dynamoRegion || !config.dynamoAccessKey || !config.dynamoAccessSecret) {
-        throw new Error('Need to provide dynamoRegion, dynamoAccessKey,' +
-                        ' dynamoAccessSecret');
+    if (!config || !config.region || !config.accessKeyId || !config.secretAccessKey) {
+        throw new Error('Need to provide region, accessKeyId,' +
+            ' secretAccessKey');
     }
     config.dynamoTable = config.dynamoTable || 'botkit';
 
-    var db = require('dynasty')({
-        accessKeyId: config.dynamoAccessKey,
-        secretAccessKey: config.dynamoAccessSecret,
-        region: config.dynamoRegion
-    });
+    var db = require('dynasty')(config);
 
     var storage = {};
 

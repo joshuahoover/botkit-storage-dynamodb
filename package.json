@@ -33,6 +33,6 @@
     "proxyquire": "^1.7.3",
     "should": "^8.1.1",
     "should-sinon": "0.0.3",
-    "sinon": "^1.17.2"
+    "sinon": "^2.4.1"
   }
 }

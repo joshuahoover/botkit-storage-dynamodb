@@ -10,16 +10,16 @@ A DynamoDB table is required:
 *Primary partition (hash) key:* type _(String)_
 *Primary sort (range) key:* id _(String)_
 
-Require `botkit-storage-dynamodb` and pass it a config with the _dynamoRegion_, _dynamoAccessKey_ and _dynamoAccessSecret_ options set. If your table is *_not_* named 'botkit', then you'll need to pass in the name of your table in the _dynamoTable_ option. Then pass the returned storage when creating your Botkit controller. Botkit will do the rest.
+Require `botkit-storage-dynamodb` and pass it a config with the _region_, _accessKeyId_ and _secretAccessKey_ options set. If your table is *_not_* named 'botkit', then you'll need to pass in the name of your table in the _dynamoTable_ option. Then pass the returned storage when creating your Botkit controller. Botkit will do the rest.
 
 Make sure everything you store has an `id` property, that's what you'll use to look it up later.
 
 ```
 var Botkit = require('botkit'),
     dynamoStorage = require('botkit-storage-dynamodb')({
-      dynamoRegion: 'us-west-2',
-      dynamoAccessKey: process.env.DYNAMODB_KEY
-      dynamoAccessSecret: process.env.DYNAMODB_SECRET }),
+      region: 'us-west-2',
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY }),
     controller = Botkit.slackbot({
         storage: dynamoStorage
     });
