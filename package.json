@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/joshuahoover/botkit-storage-dynamodb",
   "dependencies": {
-    "dynasty": "^0.2.5"
+    "dynasty": "^0.3.9"
   },
   "devDependencies": {
     "istanbul": "^0.4.2",
